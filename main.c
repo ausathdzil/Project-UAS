@@ -85,7 +85,7 @@ void startQuiz() {
     printf("\n");
 
     printf("Welcome %s! let's start the quiz.\n", p.name);
-    printf("----------------------------\n\n");
+    printf("----------------------------\n");
 
     srand(time(NULL));
     for (int i = 0; i < 5; i++) {
