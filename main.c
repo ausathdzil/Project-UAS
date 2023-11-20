@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
+#include <stdbool.h>
 
 enum menu {
     start = 1,
@@ -72,8 +73,9 @@ void showHelp() {
 
 void startQuiz() {
     player p;
-    char playerName[20];
+    char playerName[20], answer;
     float score;
+    int n;
 
     printf("\n");
 
@@ -87,12 +89,15 @@ void startQuiz() {
     printf("Welcome %s! let's start the quiz.\n", p.name);
     printf("----------------------------\n");
 
+    bool question[17] = {false};
+
     srand(time(NULL));
     for (int i = 0; i < 5; i++) {
-        int n;
-        n = (rand() % 17) + 1;
+        do {
+            n = rand() % 17;
+        } while (question[n - 1]);
 
-        char answer;
+        question[n - 1] = true;
 
         switch (n) {
             case 1:
@@ -344,7 +349,7 @@ void startQuiz() {
                 printf("Answer: ");
                 scanf(" %c", &answer);
 
-                if (answer == 'c') {
+                if (answer == 'a') {
                     printf("Correct!\n");
                     printf("---------------------------\n");
                     p.score++;
