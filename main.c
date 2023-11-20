@@ -332,6 +332,7 @@ void startQuiz() {
                     printf("Wrong!\n");
                     printf("---------------------------\n");
                 }
+                break;
 
             case 13:
                 printf("What programming language is most similar to C?\n");
@@ -351,6 +352,7 @@ void startQuiz() {
                     printf("Wrong!\n");
                     printf("---------------------------\n");
                 }
+                break;
 
             case 14:
                 printf("What can C be used for?\n");
@@ -370,6 +372,7 @@ void startQuiz() {
                     printf("Wrong!\n");
                     printf("---------------------------\n");
                 }
+                break;
 
             case 15:
                 printf("Which one is a valid integer constant?\n");
@@ -389,6 +392,7 @@ void startQuiz() {
                     printf("Wrong!\n");
                     printf("---------------------------\n");
                 }
+                break;
 
             case 16:
                 printf("Which one is a valid floating point constant?\n");
@@ -408,6 +412,7 @@ void startQuiz() {
                     printf("Wrong!\n");
                     printf("---------------------------\n");
                 }
+                break;
 
             case 17:
                 printf("What's the output of this code?\n");
@@ -434,6 +439,7 @@ void startQuiz() {
                     printf("Wrong!\n");
                     printf("---------------------------\n");
                 }
+                break;
 
             default:
                 break;
