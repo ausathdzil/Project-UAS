@@ -1,23 +1,26 @@
 #include <stdio.h>
+#include <string.h>
 
 enum menu {
     start = 1,
     scores,
     help,
-    exit
+    quit
 };
 
 typedef struct {
-    char name[20];
+    char name[100];
     float score;
 } player;
 
-void startquiz();
-void writescore(player p);
-void displayscore();
+void startquiz(int *count);
+void writescore(player *p);
+// void displayscore();
 void showhelp();
 
 int main() {
+    int count = 0;
+
     printf("\nWELCOME TO C PROGRAMMING QUIZ\n");
     printf("----------------------------\n");
     printf("1. Start\n");
@@ -31,7 +34,8 @@ int main() {
 
     switch (choice) {
         case start:
-            startquiz();
+            count++;
+            startquiz(&count);
             break;
         case scores:
             //displayscore();
@@ -39,7 +43,8 @@ int main() {
         case help:
             showhelp();
             break;
-        case exit:
+        case quit:
+            printf("Goodbye");
             break;
         default:
             printf("Invalid input\n\n");
@@ -66,7 +71,7 @@ void showhelp() {
     }
 }
 
-void startquiz() {
+void startquiz(int *count) {
     player p;
     
     printf("\n");
@@ -293,13 +298,21 @@ void startquiz() {
             break;
     }
 
-    writescore(p);
-}
-
-void writescore(player p) {
+    writescore(&p);
 
 }
 
-void displayscore() {
+void writescore(player *p) {
+    FILE *fp;
 
+    fp = fopen("playerscore.txt", "a");
+
+    if (fp = NULL) {
+        printf("Error opening file\n");
+        return;
+    }
+
+    fprintf(fp, "%s %.2f\n", p->name, ((p->score / 5)*100));
+
+    fclose(fp);
 }
