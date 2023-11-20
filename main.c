@@ -77,7 +77,6 @@ void startQuiz() {
     printf("\n");
 
     printf("Enter your name: ");
-
     scanf("%s", p.name);
 
     printf("\n");
@@ -322,5 +321,6 @@ void writeScore(char playerName[100], float score) {
     }
 
     fprintf(fptr, "%s %.2f\n", playerName, score);
+
     fclose(fptr);
 }
