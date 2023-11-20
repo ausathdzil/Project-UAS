@@ -102,9 +102,11 @@ void startquiz() {
 
                 if (answer == 'b') {
                     printf("Correct!\n");
+                    printf("---------------------------\n");
                     p.score++;
                 } else {
                     printf("Wrong!\n");
+                    printf("---------------------------\n");
                 }
                 break;
 
@@ -121,9 +123,11 @@ void startquiz() {
 
                 if (answer == 'b') {
                     printf("Correct!\n");
+                    printf("---------------------------\n");
                     p.score++;
                 } else {
                     printf("Wrong!\n");
+                    printf("---------------------------\n");
                 }
                 break;
 
@@ -140,9 +144,11 @@ void startquiz() {
 
                 if (answer == 'b') {
                     printf("Correct!\n");
+                    printf("---------------------------\n");
                     p.score++;
                 } else {
                     printf("Wrong!\n");
+                    printf("---------------------------\n");
                 }
                 break;
 
@@ -159,9 +165,11 @@ void startquiz() {
 
                 if (answer == 'd') {
                     printf("Correct!\n");
+                    printf("---------------------------\n");
                     p.score++;
                 } else {
                     printf("Wrong!\n");
+                    printf("---------------------------\n");
                 }
                 break;
 
@@ -178,9 +186,11 @@ void startquiz() {
 
                 if (answer == 'd') {
                     printf("Correct!\n");
+                    printf("---------------------------\n");
                     p.score++;
                 } else {
                     printf("Wrong!\n");
+                    printf("---------------------------\n");
                 }
                 break;
 
@@ -197,9 +207,11 @@ void startquiz() {
 
                 if (answer == 'c') {
                     printf("Correct!\n");
+                    printf("---------------------------\n");
                     p.score++;
                 } else {
                     printf("Wrong!\n");
+                    printf("---------------------------\n");
                 }
                 break;
 
@@ -216,9 +228,11 @@ void startquiz() {
 
                 if (answer == 'c') {
                     printf("Correct!\n");
+                    printf("---------------------------\n");
                     p.score++;
                 } else {
                     printf("Wrong!\n");
+                    printf("---------------------------\n");
                 }
                 break;
 
@@ -235,9 +249,11 @@ void startquiz() {
 
                 if (answer == 'd') {
                     printf("Correct!\n");
+                    printf("---------------------------\n");
                     p.score++;
                 } else {
                     printf("Wrong!\n");
+                    printf("---------------------------\n");
                 }
                 break;
 
@@ -254,9 +270,11 @@ void startquiz() {
 
                 if (answer == 'c') {
                     printf("Correct!\n");
+                    printf("---------------------------\n");
                     p.score++;
                 } else {
                     printf("Wrong!\n");
+                    printf("---------------------------\n");
                 }
                 break;
 
@@ -273,9 +291,11 @@ void startquiz() {
 
                 if (answer == 'd') {
                     printf("Correct!\n");
+                    printf("---------------------------\n");
                     p.score++;
                 } else {
                     printf("Wrong!\n");
+                    printf("---------------------------\n");
                 }
                 break;
         }
@@ -295,7 +315,7 @@ void startquiz() {
     }
 }
 
-void writescore(player *p) {
+/* void writescore(player *p) {
     FILE *fp;
 
     fp = fopen("playerscore.txt", "a");
@@ -308,4 +328,4 @@ void writescore(player *p) {
     fprintf(fp, "%s %.2f\n", p->name, ((p->score / 5)*100));
 
     fclose(fp);
-}
+} */
