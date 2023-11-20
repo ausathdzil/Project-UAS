@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 enum menu {
     start = 1,
@@ -13,10 +14,10 @@ typedef struct {
     float score;
 } player;
 
-void startquiz();
-// void writescore();
-// void displayscore();
-void showhelp();
+void startQuiz();
+void writeScore(char playerName[20], float score);
+// void displayScore();
+void showHelp();
 
 int main() {
     printf("\nWELCOME TO C PROGRAMMING QUIZ\n");
@@ -32,13 +33,13 @@ int main() {
 
     switch (choice) {
         case start:
-            startquiz();
+            startQuiz();
             break;
         case scores:
-            //displayscore();
+            // displayScore();
             break;
         case help:
-            showhelp();
+            showHelp();
             break;
         case quit:
             printf("Goodbye");
@@ -52,7 +53,7 @@ int main() {
     return 0;
 }
 
-void showhelp() {
+void showHelp() {
     printf("\nThis is a simple Quiz program using C programming language.\n");
     printf("You can choose the correct answer from the given options.\n");
     printf("Input the alphabet of the correct answer. Eg: a\n");
@@ -68,8 +69,10 @@ void showhelp() {
     }
 }
 
-void startquiz() {
+void startQuiz() {
     player p;
+    char playerName[20];
+    float score;
 
     printf("\n");
 
@@ -302,8 +305,13 @@ void startquiz() {
     }
 
     printf("----------------------------\n");
-    printf("Your score is %.2f\n", ((p.score/5)*100));
+    printf("Your score is %.2f\n", ((p.score / 5) * 100));
     printf("----------------------------\n\n");
+
+    strncpy(playerName, p.name, sizeof(playerName));
+    score = ((p.score / 5) * 100);
+
+    writeScore(playerName, score);
 
     printf("Press any key to go back to main menu\n");
 
@@ -315,17 +323,16 @@ void startquiz() {
     }
 }
 
-/* void writescore(player *p) {
-    FILE *fp;
+void writeScore(char playerName[20], float score) {
+    FILE *fptr;
 
-    fp = fopen("playerscore.txt", "a");
+    fptr = fopen("scoreboard.txt", "a");
 
-    if (fp = NULL) {
-        printf("Error opening file\n");
-        return;
+    if (fptr == NULL) {
+        printf("Error!");
+        exit(1);
     }
 
-    fprintf(fp, "%s %.2f\n", p->name, ((p->score / 5)*100));
-
-    fclose(fp);
-} */
+    fprintf(fptr, "%s %.2f\n", playerName, score);
+    fclose(fptr);
+}
