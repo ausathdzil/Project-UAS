@@ -3,7 +3,9 @@
 //void startquiz();
 //void writescore();
 //void displayscore();
-void help();
+void showhelp();
+
+enum menu {start = 1, scores, help, exit};
 
 int main() {
     printf("\nWELCOME TO C PROGRAMMING QUIZ\n");
@@ -14,20 +16,20 @@ int main() {
     printf("4. Exit\n");
     printf("----------------------------\n\n");
 
-    int n;
-    scanf("%d", &n);
+    enum menu choice;
+    scanf("%d", &choice);
 
-    switch (n) {
-        case 1:
+    switch (choice) {
+        case start:
             //startquiz();
             break;
-        case 2:
+        case scores:
             //displayscore();
             break;
-        case 3:
-            help();
+        case help:
+            showhelp();
             break;
-        case 4:
+        case exit:
             break;
         default:
             printf("Invalid input\n\n");
@@ -38,7 +40,7 @@ int main() {
     return 0;
 }
 
-void help() {
+void showhelp() {
     printf("\nThis is a simple Quiz program using C programming language.\n");
     printf("You can choose the correct answer from the given options.\n");
     printf("At the end of the Quiz, you will get the score.\n\n");
@@ -50,4 +52,8 @@ void help() {
             main();
             break;
     }
+}
+
+void startquiz() {
+
 }
