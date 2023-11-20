@@ -94,7 +94,7 @@ void startQuiz() {
     srand(time(NULL));
     for (int i = 0; i < 5; i++) {
         do {
-            n = rand() % 17;
+            n = (rand() % 16) + 1;
         } while (question[n - 1]);
 
         question[n - 1] = true;
@@ -410,33 +410,6 @@ void startQuiz() {
                 scanf(" %c", &answer);
 
                 if (answer == 'b') {
-                    printf("Correct!\n");
-                    printf("---------------------------\n");
-                    p.score++;
-                } else {
-                    printf("Wrong!\n");
-                    printf("---------------------------\n");
-                }
-                break;
-
-            case 17:
-                printf("What's the output of this code?\n");
-                printf("int main() {\n");
-                printf("    int a = 5;\n");
-                printf("    int b = 10;\n");
-                printf("    int c = a + b;\n");
-                printf("    printf(\"%d\", c);\n");
-                printf("    return 0;\n");
-                printf("}\n");
-                printf("a. 5\n");
-                printf("b. 10\n");
-                printf("c. 15\n");
-                printf("d. 20\n");
-                printf("---------------------------\n");
-                printf("Answer: ");
-                scanf(" %c", &answer);
-
-                if (answer == 'c') {
                     printf("Correct!\n");
                     printf("---------------------------\n");
                     p.score++;
