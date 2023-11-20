@@ -3,7 +3,14 @@
 //void startquiz();
 //void writescore();
 //void displayscore();
-void help();
+void showhelp();
+
+enum menu {
+    start = 1,
+    scores,
+    help,
+    exit
+};
 
 int main() {
     printf("\nWELCOME TO C PROGRAMMING QUIZ\n");
