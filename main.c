@@ -1,6 +1,10 @@
 #include <stdio.h>
 
 //void startquiz();
+void startquiz()
+{
+    printf("halo");
+}
 //void writescore();
 //void displayscore();
 void help();
