@@ -1,12 +1,8 @@
 #include <stdio.h>
 
-//void startquiz();
-void startquiz()
-{
-    printf("halo");
-}
-//void writescore();
-//void displayscore();
+//void startquiz(); -> char name, float score, int quiz
+//void writescore(); -> float score, file score;
+//void displayscore(); -> file score;
 void help();
 
 int main() {
