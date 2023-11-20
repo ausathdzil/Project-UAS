@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <string.h>
+#include <stdlib.h>
 
 enum menu {
     start = 1,
@@ -13,14 +13,12 @@ typedef struct {
     float score;
 } player;
 
-void startquiz(int *count);
-void writescore(player *p);
+void startquiz();
+// void writescore();
 // void displayscore();
 void showhelp();
 
 int main() {
-    int count = 0;
-
     printf("\nWELCOME TO C PROGRAMMING QUIZ\n");
     printf("----------------------------\n");
     printf("1. Start\n");
@@ -34,8 +32,7 @@ int main() {
 
     switch (choice) {
         case start:
-            count++;
-            startquiz(&count);
+            startquiz();
             break;
         case scores:
             //displayscore();
@@ -71,13 +68,13 @@ void showhelp() {
     }
 }
 
-void startquiz(int *count) {
+void startquiz() {
     player p;
-    
+
     printf("\n");
 
     printf("Enter your name: ");
-    
+
     gets(p.name);
     while (getchar() != '\n');
 
@@ -85,11 +82,10 @@ void startquiz(int *count) {
 
     printf("Welcome %s! let's start the quiz.\n", p.name);
     printf("----------------------------\n\n");
-	
+
     for (int i = 0; i < 5; i++) {
-        int n;
-        n = rand() % 10;
-        
+        int n = (rand() % 10) + 1;
+
         char answer;
 
         switch (n) {
@@ -168,7 +164,7 @@ void startquiz(int *count) {
                     printf("Wrong!\n");
                 }
                 break;
-            
+
             case 5:
                 printf("Which one is not a valid variable name in C?\n");
                 printf("a. int\n");
@@ -187,7 +183,7 @@ void startquiz(int *count) {
                     printf("Wrong!\n");
                 }
                 break;
-            
+
             case 6:
                 printf("Which one is not a valid function name in C?\n");
                 printf("a. main\n");
@@ -206,7 +202,7 @@ void startquiz(int *count) {
                     printf("Wrong!\n");
                 }
                 break;
-            
+
             case 7:
                 printf("Which one is not a valid header file in C?\n");
                 printf("a. stdio.h\n");
@@ -244,7 +240,7 @@ void startquiz(int *count) {
                     printf("Wrong!\n");
                 }
                 break;
-            
+
             case 9:
                 printf("Which one is not a valid comment in C?\n");
                 printf("a. // comment\n");
@@ -263,7 +259,7 @@ void startquiz(int *count) {
                     printf("Wrong!\n");
                 }
                 break;
-            
+
             default:
                 printf("Which one is not a valid loop in C?\n");
                 printf("a. for\n");
@@ -297,9 +293,6 @@ void startquiz(int *count) {
             main();
             break;
     }
-
-    writescore(&p);
-
 }
 
 void writescore(player *p) {
