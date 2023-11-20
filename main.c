@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
 
 enum menu {
     start = 1,
@@ -25,7 +26,7 @@ int main() {
     printf("1. Start\n");
     printf("2. Scoreboard\n");
     printf("3. Help\n");
-    printf("4. Exit\n");
+    printf("4. Quit\n");
     printf("----------------------------\n\n");
 
     enum menu choice;
@@ -79,13 +80,17 @@ void startQuiz() {
     printf("Enter your name: ");
     scanf("%s", p.name);
 
+    strncpy(playerName, p.name, sizeof(playerName));
+
     printf("\n");
 
     printf("Welcome %s! let's start the quiz.\n", p.name);
     printf("----------------------------\n\n");
 
+    srand(time(NULL));
     for (int i = 0; i < 5; i++) {
-        int n = (rand() % 10) + 1;
+        int n;
+        n = (rand() % 17) + 1;
 
         char answer;
 
@@ -131,11 +136,11 @@ void startQuiz() {
                 break;
 
             case 3:
-                printf("Which one is not a reserve keyword in C?\n");
-                printf("a. auto\n");
-                printf("b. main\n");
-                printf("c. case\n");
-                printf("d. default\n");
+                printf("What is the extension of C file?\n");
+                printf("a. .cpp\n");
+                printf("b. .c\n");
+                printf("c. .html\n");
+                printf("d. .java\n");
                 printf("---------------------------\n");
                 printf("Answer: ");
                 scanf(" %c", &answer);
@@ -172,9 +177,9 @@ void startQuiz() {
 
             case 5:
                 printf("Which one is not a valid variable name in C?\n");
-                printf("a. int\n");
-                printf("b. float\n");
-                printf("c. char\n");
+                printf("a. name\n");
+                printf("b. Name\n");
+                printf("c. NAME\n");
                 printf("d. 1name\n");
                 printf("---------------------------\n");
                 printf("Answer: ");
@@ -192,10 +197,10 @@ void startQuiz() {
 
             case 6:
                 printf("Which one is not a valid function name in C?\n");
-                printf("a. main\n");
-                printf("b. printf\n");
-                printf("c. 1name\n");
-                printf("d. scanf\n");
+                printf("a. function1\n");
+                printf("b. function_1\n");
+                printf("c. 1function\n");
+                printf("d. FUNCTION1\n");
                 printf("---------------------------\n");
                 printf("Answer: ");
                 scanf(" %c", &answer);
@@ -214,7 +219,7 @@ void startQuiz() {
                 printf("Which one is not a valid header file in C?\n");
                 printf("a. stdio.h\n");
                 printf("b. stdlib.h\n");
-                printf("c. string.h\n");
+                printf("c. string.c\n");
                 printf("d. math.h\n");
                 printf("---------------------------\n");
                 printf("Answer: ");
@@ -233,9 +238,9 @@ void startQuiz() {
             case 8:
                 printf("Which one is not a valid operator in C?\n");
                 printf("a. +\n");
-                printf("b. ++\n");
-                printf("c. +=\n");
-                printf("d. &\n");
+                printf("b. *\n");
+                printf("c. /\n");
+                printf("d. x\n");
                 printf("---------------------------\n");
                 printf("Answer: ");
                 scanf(" %c", &answer);
@@ -251,11 +256,30 @@ void startQuiz() {
                 break;
 
             case 9:
-                printf("Which one is not a valid comment in C?\n");
-                printf("a. // comment\n");
-                printf("b. /* comment */\n");
-                printf("c. /* comment\n");
-                printf("d. comment */\n");
+                printf("Which one is not a valid keyword in C?\n");
+                printf("a. if\n");
+                printf("b. else\n");
+                printf("c. do\n");
+                printf("d. loop\n");
+                printf("---------------------------\n");
+                printf("Answer: ");
+                scanf(" %c", &answer);
+
+                if (answer == 'd') {
+                    printf("Correct!\n");
+                    printf("---------------------------\n");
+                    p.score++;
+                } else {
+                    printf("Wrong!\n");
+                }
+                break;
+
+            case 10:
+                printf("Which one is not a valid data type in C?\n");
+                printf("a. int\n");
+                printf("b. float\n");
+                printf("c. string\n");
+                printf("d. char\n");
                 printf("---------------------------\n");
                 printf("Answer: ");
                 scanf(" %c", &answer);
@@ -270,12 +294,70 @@ void startQuiz() {
                 }
                 break;
 
-            default:
-                printf("Which one is not a valid loop in C?\n");
-                printf("a. for\n");
-                printf("b. while\n");
-                printf("c. do while\n");
-                printf("d. loop\n");
+            case 11:
+                printf("Which one is not a valid function in C?\n");
+                printf("a. gets()\n");
+                printf("b. scan()\n");
+                printf("c. printf()\n");
+                printf("d. main()\n");
+                printf("---------------------------\n");
+                printf("Answer: ");
+                scanf(" %c", &answer);
+
+                if (answer == 'a') {
+                    printf("Correct!\n");
+                    printf("---------------------------\n");
+                    p.score++;
+                } else {
+                    printf("Wrong!\n");
+                    printf("---------------------------\n");
+                }
+                break;
+
+            case 12:
+                printf("What is the extension of C header file?\n");
+                printf("a. .cpp\n");
+                printf("b. .c\n");
+                printf("c. .h\n");
+                printf("d. .java\n");
+                printf("---------------------------\n");
+                printf("Answer: ");
+                scanf(" %c", &answer);
+
+                if (answer == 'c') {
+                    printf("Correct!\n");
+                    printf("---------------------------\n");
+                    p.score++;
+                } else {
+                    printf("Wrong!\n");
+                    printf("---------------------------\n");
+                }
+
+            case 13:
+                printf("What programming language is most similar to C?\n");
+                printf("a. C++\n");
+                printf("b. Python\n");
+                printf("c. Java\n");
+                printf("d. JavaScript\n");
+                printf("---------------------------\n");
+                printf("Answer: ");
+                scanf(" %c", &answer);
+
+                if (answer == 'c') {
+                    printf("Correct!\n");
+                    printf("---------------------------\n");
+                    p.score++;
+                } else {
+                    printf("Wrong!\n");
+                    printf("---------------------------\n");
+                }
+
+            case 14:
+                printf("What can C be used for?\n");
+                printf("a. Web Development\n");
+                printf("b. Machine Learning\n");
+                printf("c. Database Management\n");
+                printf("d. All of the above\n");
                 printf("---------------------------\n");
                 printf("Answer: ");
                 scanf(" %c", &answer);
@@ -288,16 +370,81 @@ void startQuiz() {
                     printf("Wrong!\n");
                     printf("---------------------------\n");
                 }
+
+            case 15:
+                printf("Which one is a valid integer constant?\n");
+                printf("a. 123\n");
+                printf("b. 123.45\n");
+                printf("c. 123,45\n");
+                printf("d. 123e-2\n");
+                printf("---------------------------\n");
+                printf("Answer: ");
+                scanf(" %c", &answer);
+
+                if (answer == 'a') {
+                    printf("Correct!\n");
+                    printf("---------------------------\n");
+                    p.score++;
+                } else {
+                    printf("Wrong!\n");
+                    printf("---------------------------\n");
+                }
+
+            case 16:
+                printf("Which one is a valid floating point constant?\n");
+                printf("a. 123\n");
+                printf("b. 123.45\n");
+                printf("c. 123,45\n");
+                printf("d. 123e-2\n");
+                printf("---------------------------\n");
+                printf("Answer: ");
+                scanf(" %c", &answer);
+
+                if (answer == 'b') {
+                    printf("Correct!\n");
+                    printf("---------------------------\n");
+                    p.score++;
+                } else {
+                    printf("Wrong!\n");
+                    printf("---------------------------\n");
+                }
+
+            case 17:
+                printf("What's the output of this code?\n");
+                printf("int main() {\n");
+                printf("    int a = 5;\n");
+                printf("    int b = 10;\n");
+                printf("    int c = a + b;\n");
+                printf("    printf(\"%d\", c);\n");
+                printf("    return 0;\n");
+                printf("}\n");
+                printf("a. 5\n");
+                printf("b. 10\n");
+                printf("c. 15\n");
+                printf("d. 20\n");
+                printf("---------------------------\n");
+                printf("Answer: ");
+                scanf(" %c", &answer);
+
+                if (answer == 'c') {
+                    printf("Correct!\n");
+                    printf("---------------------------\n");
+                    p.score++;
+                } else {
+                    printf("Wrong!\n");
+                    printf("---------------------------\n");
+                }
+
+            default:
                 break;
         }
     }
 
-    printf("----------------------------\n");
-    printf("Your score is %.2f\n", ((p.score / 5) * 100));
-    printf("----------------------------\n\n");
-
-    strncpy(playerName, p.name, sizeof(playerName));
     score = ((p.score / 5) * 100);
+
+    printf("----------------------------\n");
+    printf("Your score is %.2f\n", score);
+    printf("----------------------------\n\n");
 
     writeScore(playerName, score);
 
