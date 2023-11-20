@@ -1,10 +1,5 @@
 #include <stdio.h>
 
-void startquiz();
-//void writescore();
-//void displayscore();
-void showhelp();
-
 enum menu {
     start = 1,
     scores,
@@ -16,6 +11,11 @@ typedef struct {
     char name[20];
     float score;
 } player;
+
+void startquiz();
+void writescore(player p);
+void displayscore();
+void showhelp();
 
 int main() {
     printf("\nWELCOME TO C PROGRAMMING QUIZ\n");
@@ -292,4 +292,14 @@ void startquiz() {
             main();
             break;
     }
+
+    writescore(p);
+}
+
+void writescore(player p) {
+
+}
+
+void displayscore() {
+
 }
