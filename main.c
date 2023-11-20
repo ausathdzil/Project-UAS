@@ -15,7 +15,7 @@ typedef struct {
 } player;
 
 void startQuiz();
-void writeScore(char playerName[20], float score);
+void writeScore(char playerName[100], float score);
 // void displayScore();
 void showHelp();
 
@@ -78,8 +78,7 @@ void startQuiz() {
 
     printf("Enter your name: ");
 
-    gets(p.name);
-    while (getchar() != '\n');
+    scanf("%s", p.name);
 
     printf("\n");
 
@@ -100,8 +99,7 @@ void startQuiz() {
                 printf("d. 1976\n");
                 printf("---------------------------\n");
                 printf("Answer: ");
-                scanf("%c", &answer);
-                while (getchar() != '\n');
+                scanf(" %c", &answer);
 
                 if (answer == 'b') {
                     printf("Correct!\n");
@@ -121,8 +119,7 @@ void startQuiz() {
                 printf("d. Steve Jobs\n");
                 printf("---------------------------\n");
                 printf("Answer: ");
-                scanf("%c", &answer);
-                while (getchar() != '\n');
+                scanf(" %c", &answer);
 
                 if (answer == 'b') {
                     printf("Correct!\n");
@@ -142,8 +139,7 @@ void startQuiz() {
                 printf("d. default\n");
                 printf("---------------------------\n");
                 printf("Answer: ");
-                scanf("%c", &answer);
-                while (getchar() != '\n');
+                scanf(" %c", &answer);
 
                 if (answer == 'b') {
                     printf("Correct!\n");
@@ -163,8 +159,7 @@ void startQuiz() {
                 printf("d. string\n");
                 printf("---------------------------\n");
                 printf("Answer: ");
-                scanf("%c", &answer);
-                while (getchar() != '\n');
+                scanf(" %c", &answer);
 
                 if (answer == 'd') {
                     printf("Correct!\n");
@@ -184,8 +179,7 @@ void startQuiz() {
                 printf("d. 1name\n");
                 printf("---------------------------\n");
                 printf("Answer: ");
-                scanf("%c", &answer);
-                while (getchar() != '\n');
+                scanf(" %c", &answer);
 
                 if (answer == 'd') {
                     printf("Correct!\n");
@@ -205,8 +199,7 @@ void startQuiz() {
                 printf("d. scanf\n");
                 printf("---------------------------\n");
                 printf("Answer: ");
-                scanf("%c", &answer);
-                while (getchar() != '\n');
+                scanf(" %c", &answer);
 
                 if (answer == 'c') {
                     printf("Correct!\n");
@@ -226,8 +219,7 @@ void startQuiz() {
                 printf("d. math.h\n");
                 printf("---------------------------\n");
                 printf("Answer: ");
-                scanf("%c", &answer);
-                while (getchar() != '\n');
+                scanf(" %c", &answer);
 
                 if (answer == 'c') {
                     printf("Correct!\n");
@@ -247,8 +239,7 @@ void startQuiz() {
                 printf("d. &\n");
                 printf("---------------------------\n");
                 printf("Answer: ");
-                scanf("%c", &answer);
-                while (getchar() != '\n');
+                scanf(" %c", &answer);
 
                 if (answer == 'd') {
                     printf("Correct!\n");
@@ -268,8 +259,7 @@ void startQuiz() {
                 printf("d. comment */\n");
                 printf("---------------------------\n");
                 printf("Answer: ");
-                scanf("%c", &answer);
-                while (getchar() != '\n');
+                scanf(" %c", &answer);
 
                 if (answer == 'c') {
                     printf("Correct!\n");
@@ -289,8 +279,7 @@ void startQuiz() {
                 printf("d. loop\n");
                 printf("---------------------------\n");
                 printf("Answer: ");
-                scanf("%c", &answer);
-                while (getchar() != '\n');
+                scanf(" %c", &answer);
 
                 if (answer == 'd') {
                     printf("Correct!\n");
@@ -313,8 +302,7 @@ void startQuiz() {
 
     writeScore(playerName, score);
 
-    printf("Press any key to go back to main menu\n");
-
+    printf("Input any key to go back to main menu\n");
     getchar();
     switch (getchar()) {
         default:
@@ -323,7 +311,7 @@ void startQuiz() {
     }
 }
 
-void writeScore(char playerName[20], float score) {
+void writeScore(char playerName[100], float score) {
     FILE *fptr;
 
     fptr = fopen("scoreboard.txt", "a");
