@@ -494,10 +494,12 @@ void displayScore() {
 
     qsort(p, numPlayers, sizeof(player), cmpScores);
 
+    int numToDisplay = numPlayers < 5 ? numPlayers : 5;
+
     printf("\nSCOREBOARD\n");
     printf("----------------------------\n");
 
-    for (int i = 0; i < numPlayers; ++i) {
+    for (int i = 0; i < numToDisplay; i++) {
         printf("%d. %s %.2f\n", i + 1, p[i].name, p[i].score);
     }
 
