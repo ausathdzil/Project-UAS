@@ -20,6 +20,7 @@ void startQuiz();
 void writeScore(char playerName[20], float score);
 void displayScore();
 void showHelp();
+void clearScreen();
 int cmpScores(const void *a, const void *b);
 
 int main() {
@@ -31,23 +32,29 @@ int main() {
     printf("4. Quit\n");
     printf("----------------------------\n\n");
 
+    printf("Enter your choice: ");
+
     enum menu choice;
     scanf("%d", &choice);
 
     switch (choice) {
         case start:
+            clearScreen();
             startQuiz();
             break;
         case scores:
+            clearScreen();
             displayScore();
             break;
         case help:
+            clearScreen();
             showHelp();
             break;
         case quit:
             printf("Goodbye");
             break;
         default:
+            clearScreen();
             printf("Invalid input\n\n");
             main();
             break;
@@ -67,6 +74,7 @@ void showHelp() {
     getchar();
     switch (getchar()) {
         default:
+            clearScreen();
             main();
             break;
     }
@@ -448,6 +456,7 @@ void startQuiz() {
     getchar();
     switch (getchar()) {
         default:
+            clearScreen();
             main();
             break;
     }
@@ -481,6 +490,7 @@ void displayScore() {
         getchar();
         switch (getchar()) {
             default:
+                clearScreen();
                 main();
                 break;
         }
@@ -509,6 +519,7 @@ void displayScore() {
     getchar();
     switch (getchar()) {
         default:
+            clearScreen();
             main();
             break;
     }
@@ -521,4 +532,8 @@ int cmpScores(const void *a, const void *b) {
     player *p2 = (player *) b;
 
     return (p2->score - p1->score);
+}
+
+void clearScreen() {
+    system("cls");
 }
