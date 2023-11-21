@@ -510,8 +510,30 @@ void startQuiz()
         break;
     }
 }
-
-void writeScore(char playerName[100], float score) {
+void displayScore()
+{
+    char name[100];
+    float score;
+    FILE *fptr;
+    fptr = fopen("scoreboard.txt", "r");
+    if (fptr == NULL)
+    {
+        printf("\nNo player has played the game!\n\n");
+        return;
+    }
+    int i = 0;
+    printf("\nSCOREBOARD\n");
+    printf("----------------------------\n");
+    while (fscanf(fptr, "%s %f", name, &score) != EOF)
+    {
+        printf("Rank %d : %s - %.2f\n", i + 1, name, score);
+        i++;
+    }
+    printf("----------------------------");
+    fclose(fptr);
+}
+void writeScore(char playerName[100], float score)
+{
     FILE *fptr;
 
     fptr = fopen("scoreboard.txt", "a");
