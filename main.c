@@ -4,6 +4,16 @@
 #include <time.h>
 #include <stdbool.h>
 #define NUM_QUESTIONS 16
+#define QUIZ_QUESTIONS 5
+
+void startQuiz();
+void writeScore(char playerName[20], float score);
+void displayScore();
+void showHelp();
+void clearInputBuffer();
+void clearScreen();
+
+int cmpScores(const void *a, const void *b);
 
 enum menu {
     start = 1,
@@ -16,13 +26,6 @@ typedef struct {
     char name[20];
     float score;
 } player;
-
-void startQuiz();
-void writeScore(char playerName[20], float score);
-void displayScore();
-void showHelp();
-void clearScreen();
-int cmpScores(const void *a, const void *b);
 
 int main() {
     printf("\nWELCOME TO C PROGRAMMING QUIZ\n");
@@ -37,8 +40,7 @@ int main() {
 
     enum menu choice;
     scanf("%d", &choice);
-    int c;
-    while ((c = getchar()) != '\n' && c != EOF);
+    clearInputBuffer();
 
     switch (choice) {
         case start:
@@ -68,6 +70,8 @@ int main() {
 
 void showHelp() {
     printf("\nThis is a simple Quiz program using C programming language.\n");
+    printf("----------------------------\n");
+    printf("You will be asked 5 questions.\n");
     printf("You can choose the correct answer from the given options.\n");
     printf("Input the alphabet of the correct answer. Eg: a\n");
     printf("At the end of the Quiz, you will get the score.\n");
@@ -93,8 +97,7 @@ void startQuiz() {
 
     printf("Enter your name: ");
     scanf("%s", p.name);
-    int c;
-    while ((c = getchar()) != '\n' && c != EOF);
+    clearInputBuffer();
 
     strncpy(playerName, p.name, sizeof(playerName));
 
@@ -106,7 +109,9 @@ void startQuiz() {
     bool question[NUM_QUESTIONS] = {false};
 
     srand(time(NULL));
-    for (int i = 0; i < 5; i++) {
+    for (int i = 0; i < QUIZ_QUESTIONS; i++) {
+        printf("Question %d\n", i + 1);
+
         do {
             n = (rand() % NUM_QUESTIONS) + 1;
         } while (question[n - 1]);
@@ -123,7 +128,7 @@ void startQuiz() {
                 printf("---------------------------\n");
                 printf("Answer: ");
                 scanf(" %c", &answer);
-                while ((c = getchar()) != '\n' && c != EOF);
+                clearInputBuffer();
 
                 if (answer == 'b') {
                     printf("Correct!\n");
@@ -144,7 +149,7 @@ void startQuiz() {
                 printf("---------------------------\n");
                 printf("Answer: ");
                 scanf(" %c", &answer);
-                while ((c = getchar()) != '\n' && c != EOF);
+                clearInputBuffer();
 
                 if (answer == 'b') {
                     printf("Correct!\n");
@@ -165,7 +170,7 @@ void startQuiz() {
                 printf("---------------------------\n");
                 printf("Answer: ");
                 scanf(" %c", &answer);
-                while ((c = getchar()) != '\n' && c != EOF);
+                clearInputBuffer();
 
                 if (answer == 'b') {
                     printf("Correct!\n");
@@ -186,7 +191,7 @@ void startQuiz() {
                 printf("---------------------------\n");
                 printf("Answer: ");
                 scanf(" %c", &answer);
-                while ((c = getchar()) != '\n' && c != EOF);
+                clearInputBuffer();
 
                 if (answer == 'd') {
                     printf("Correct!\n");
@@ -207,7 +212,7 @@ void startQuiz() {
                 printf("---------------------------\n");
                 printf("Answer: ");
                 scanf(" %c", &answer);
-                while ((c = getchar()) != '\n' && c != EOF);
+                clearInputBuffer();
 
                 if (answer == 'd') {
                     printf("Correct!\n");
@@ -228,7 +233,7 @@ void startQuiz() {
                 printf("---------------------------\n");
                 printf("Answer: ");
                 scanf(" %c", &answer);
-                while ((c = getchar()) != '\n' && c != EOF);
+                clearInputBuffer();
 
                 if (answer == 'c') {
                     printf("Correct!\n");
@@ -249,7 +254,7 @@ void startQuiz() {
                 printf("---------------------------\n");
                 printf("Answer: ");
                 scanf(" %c", &answer);
-                while ((c = getchar()) != '\n' && c != EOF);
+                clearInputBuffer();
 
                 if (answer == 'c') {
                     printf("Correct!\n");
@@ -270,7 +275,7 @@ void startQuiz() {
                 printf("---------------------------\n");
                 printf("Answer: ");
                 scanf(" %c", &answer);
-                while ((c = getchar()) != '\n' && c != EOF);
+                clearInputBuffer();
 
                 if (answer == 'd') {
                     printf("Correct!\n");
@@ -291,7 +296,7 @@ void startQuiz() {
                 printf("---------------------------\n");
                 printf("Answer: ");
                 scanf(" %c", &answer);
-                while ((c = getchar()) != '\n' && c != EOF);
+                clearInputBuffer();
 
                 if (answer == 'd') {
                     printf("Correct!\n");
@@ -311,7 +316,7 @@ void startQuiz() {
                 printf("---------------------------\n");
                 printf("Answer: ");
                 scanf(" %c", &answer);
-                while ((c = getchar()) != '\n' && c != EOF);
+                clearInputBuffer();
 
                 if (answer == 'c') {
                     printf("Correct!\n");
@@ -332,7 +337,7 @@ void startQuiz() {
                 printf("---------------------------\n");
                 printf("Answer: ");
                 scanf(" %c", &answer);
-                while ((c = getchar()) != '\n' && c != EOF);
+                clearInputBuffer();
 
                 if (answer == 'b') {
                     printf("Correct!\n");
@@ -353,7 +358,7 @@ void startQuiz() {
                 printf("---------------------------\n");
                 printf("Answer: ");
                 scanf(" %c", &answer);
-                while ((c = getchar()) != '\n' && c != EOF);
+                clearInputBuffer();
 
                 if (answer == 'c') {
                     printf("Correct!\n");
@@ -374,7 +379,7 @@ void startQuiz() {
                 printf("---------------------------\n");
                 printf("Answer: ");
                 scanf(" %c", &answer);
-                while ((c = getchar()) != '\n' && c != EOF);
+                clearInputBuffer();
 
                 if (answer == 'a') {
                     printf("Correct!\n");
@@ -395,7 +400,7 @@ void startQuiz() {
                 printf("---------------------------\n");
                 printf("Answer: ");
                 scanf(" %c", &answer);
-                while ((c = getchar()) != '\n' && c != EOF);
+                clearInputBuffer();
 
                 if (answer == 'd') {
                     printf("Correct!\n");
@@ -416,7 +421,7 @@ void startQuiz() {
                 printf("---------------------------\n");
                 printf("Answer: ");
                 scanf(" %c", &answer);
-                while ((c = getchar()) != '\n' && c != EOF);
+                clearInputBuffer();
 
                 if (answer == 'a') {
                     printf("Correct!\n");
@@ -437,7 +442,7 @@ void startQuiz() {
                 printf("---------------------------\n");
                 printf("Answer: ");
                 scanf(" %c", &answer);
-                while ((c = getchar()) != '\n' && c != EOF);
+                clearInputBuffer();
 
                 if (answer == 'b') {
                     printf("Correct!\n");
@@ -506,7 +511,7 @@ void displayScore() {
     fptr = fopen("scoreboard.txt", "r");
 
     if (fptr == NULL) {
-        printf("No Player has Played the Game!\n\n");
+        printf("No Player has played the game!\n\n");
         printf("Input any key to go back to main menu\n");
         getchar();
         switch (getchar()) {
@@ -551,6 +556,11 @@ int cmpScores(const void *a, const void *b) {
     player *p2 = (player *) b;
 
     return (p2->score - p1->score);
+}
+
+void clearInputBuffer() {
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF);
 }
 
 void clearScreen() {
