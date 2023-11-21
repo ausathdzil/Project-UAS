@@ -310,7 +310,7 @@ void startQuiz() {
                 printf("Answer: ");
                 scanf(" %c", &answer);
 
-                if (answer == 'a') {
+                if (answer == 'b') {
                     printf("Correct!\n");
                     printf("---------------------------\n");
                     p.score++;
