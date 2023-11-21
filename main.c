@@ -30,13 +30,12 @@ typedef struct {
 int main() {
     printf("\nWELCOME TO C PROGRAMMING QUIZ\n");
     printf("----------------------------\n");
-    printf("1. Start\n");
+    printf("1. Start Quiz\n");
     printf("2. Scoreboard\n");
     printf("3. Help\n");
     printf("4. Quit\n");
     printf("----------------------------\n\n");
-
-    printf("Enter your choice: ");
+    printf("Input your choice: ");
 
     enum menu choice;
     scanf("%d", &choice);
