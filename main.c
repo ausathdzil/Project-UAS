@@ -461,6 +461,8 @@ void startQuiz() {
 
     score = ((p.score / 5) * 100);
 
+    clearScreen();
+
     printf("----------------------------\n");
     printf("Your score is %.2f\n", score);
     if (score == 100) {
