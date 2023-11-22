@@ -1,8 +1,10 @@
+#include <ctype.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <time.h>
 #include <stdbool.h>
+#include <time.h>
+
 #define NUM_QUESTIONS 16
 #define QUIZ_QUESTIONS 5
 
@@ -12,6 +14,7 @@ void displayScore();
 void showHelp();
 void clearInputBuffer();
 void clearScreen();
+void delay(int number_of_seconds);
 
 int cmpScores(const void *a, const void *b);
 
@@ -130,12 +133,16 @@ void startQuiz() {
                 scanf(" %c", &answer);
                 clearInputBuffer();
 
-                if (answer == 'b') {
+                if (tolower(answer) == 'b') {
                     printf("Correct!\n");
-                    printf("---------------------------\n");
                     p.score++;
+                    delay(1);
+                    clearScreen();
+                    printf("---------------------------\n");
                 } else {
                     printf("Wrong!\n");
+                    delay(1);
+                    clearScreen();
                     printf("---------------------------\n");
                 }
                 break;
@@ -151,12 +158,16 @@ void startQuiz() {
                 scanf(" %c", &answer);
                 clearInputBuffer();
 
-                if (answer == 'b') {
+                if (tolower(answer) == 'b') {
                     printf("Correct!\n");
-                    printf("---------------------------\n");
                     p.score++;
+                    delay(1);
+                    clearScreen();
+                    printf("---------------------------\n");
                 } else {
                     printf("Wrong!\n");
+                    delay(1);
+                    clearScreen();
                     printf("---------------------------\n");
                 }
                 break;
@@ -172,12 +183,16 @@ void startQuiz() {
                 scanf(" %c", &answer);
                 clearInputBuffer();
 
-                if (answer == 'b') {
+                if (tolower(answer) == 'b') {
                     printf("Correct!\n");
-                    printf("---------------------------\n");
                     p.score++;
+                    delay(1);
+                    clearScreen();
+                    printf("---------------------------\n");
                 } else {
                     printf("Wrong!\n");
+                    delay(1);
+                    clearScreen();
                     printf("---------------------------\n");
                 }
                 break;
@@ -193,12 +208,16 @@ void startQuiz() {
                 scanf(" %c", &answer);
                 clearInputBuffer();
 
-                if (answer == 'd') {
+                if (tolower(answer) == 'd') {
                     printf("Correct!\n");
-                    printf("---------------------------\n");
                     p.score++;
+                    delay(1);
+                    clearScreen();
+                    printf("---------------------------\n");
                 } else {
                     printf("Wrong!\n");
+                    delay(1);
+                    clearScreen();
                     printf("---------------------------\n");
                 }
                 break;
@@ -214,12 +233,16 @@ void startQuiz() {
                 scanf(" %c", &answer);
                 clearInputBuffer();
 
-                if (answer == 'd') {
+                if (tolower(answer) == 'd') {
                     printf("Correct!\n");
-                    printf("---------------------------\n");
                     p.score++;
+                    delay(1);
+                    clearScreen();
+                    printf("---------------------------\n");
                 } else {
                     printf("Wrong!\n");
+                    delay(1);
+                    clearScreen();
                     printf("---------------------------\n");
                 }
                 break;
@@ -235,12 +258,16 @@ void startQuiz() {
                 scanf(" %c", &answer);
                 clearInputBuffer();
 
-                if (answer == 'c') {
+                if (tolower(answer) == 'c') {
                     printf("Correct!\n");
-                    printf("---------------------------\n");
                     p.score++;
+                    delay(1);
+                    clearScreen();
+                    printf("---------------------------\n");
                 } else {
                     printf("Wrong!\n");
+                    delay(1);
+                    clearScreen();
                     printf("---------------------------\n");
                 }
                 break;
@@ -256,12 +283,16 @@ void startQuiz() {
                 scanf(" %c", &answer);
                 clearInputBuffer();
 
-                if (answer == 'c') {
+                if (tolower(answer) == 'c') {
                     printf("Correct!\n");
-                    printf("---------------------------\n");
                     p.score++;
+                    delay(1);
+                    clearScreen();
+                    printf("---------------------------\n");
                 } else {
                     printf("Wrong!\n");
+                    delay(1);
+                    clearScreen();
                     printf("---------------------------\n");
                 }
                 break;
@@ -277,12 +308,16 @@ void startQuiz() {
                 scanf(" %c", &answer);
                 clearInputBuffer();
 
-                if (answer == 'd') {
+                if (tolower(answer) == 'd') {
                     printf("Correct!\n");
-                    printf("---------------------------\n");
                     p.score++;
+                    delay(1);
+                    clearScreen();
+                    printf("---------------------------\n");
                 } else {
                     printf("Wrong!\n");
+                    delay(1);
+                    clearScreen();
                     printf("---------------------------\n");
                 }
                 break;
@@ -298,10 +333,12 @@ void startQuiz() {
                 scanf(" %c", &answer);
                 clearInputBuffer();
 
-                if (answer == 'd') {
+                if (tolower(answer) == 'd') {
                     printf("Correct!\n");
-                    printf("---------------------------\n");
                     p.score++;
+                    delay(1);
+                    clearScreen();
+                    printf("---------------------------\n");
                 } else {
                     printf("Wrong!\n");
                 }
@@ -318,12 +355,16 @@ void startQuiz() {
                 scanf(" %c", &answer);
                 clearInputBuffer();
 
-                if (answer == 'c') {
+                if (tolower(answer) == 'c') {
                     printf("Correct!\n");
-                    printf("---------------------------\n");
                     p.score++;
+                    delay(1);
+                    clearScreen();
+                    printf("---------------------------\n");
                 } else {
                     printf("Wrong!\n");
+                    delay(1);
+                    clearScreen();
                     printf("---------------------------\n");
                 }
                 break;
@@ -339,12 +380,16 @@ void startQuiz() {
                 scanf(" %c", &answer);
                 clearInputBuffer();
 
-                if (answer == 'b') {
+                if (tolower(answer) == 'b') {
                     printf("Correct!\n");
-                    printf("---------------------------\n");
                     p.score++;
+                    delay(1);
+                    clearScreen();
+                    printf("---------------------------\n");
                 } else {
                     printf("Wrong!\n");
+                    delay(1);
+                    clearScreen();
                     printf("---------------------------\n");
                 }
                 break;
@@ -360,12 +405,16 @@ void startQuiz() {
                 scanf(" %c", &answer);
                 clearInputBuffer();
 
-                if (answer == 'c') {
+                if (tolower(answer) == 'c') {
                     printf("Correct!\n");
-                    printf("---------------------------\n");
                     p.score++;
+                    delay(1);
+                    clearScreen();
+                    printf("---------------------------\n");
                 } else {
                     printf("Wrong!\n");
+                    delay(1);
+                    clearScreen();
                     printf("---------------------------\n");
                 }
                 break;
@@ -381,12 +430,16 @@ void startQuiz() {
                 scanf(" %c", &answer);
                 clearInputBuffer();
 
-                if (answer == 'a') {
+                if (tolower(answer) == 'a') {
                     printf("Correct!\n");
-                    printf("---------------------------\n");
                     p.score++;
+                    delay(1);
+                    clearScreen();
+                    printf("---------------------------\n");
                 } else {
                     printf("Wrong!\n");
+                    delay(1);
+                    clearScreen();
                     printf("---------------------------\n");
                 }
                 break;
@@ -402,12 +455,16 @@ void startQuiz() {
                 scanf(" %c", &answer);
                 clearInputBuffer();
 
-                if (answer == 'd') {
+                if (tolower(answer) == 'd') {
                     printf("Correct!\n");
-                    printf("---------------------------\n");
                     p.score++;
+                    delay(1);
+                    clearScreen();
+                    printf("---------------------------\n");
                 } else {
                     printf("Wrong!\n");
+                    delay(1);
+                    clearScreen();
                     printf("---------------------------\n");
                 }
                 break;
@@ -423,12 +480,16 @@ void startQuiz() {
                 scanf(" %c", &answer);
                 clearInputBuffer();
 
-                if (answer == 'a') {
+                if (tolower(answer) == 'a') {
                     printf("Correct!\n");
-                    printf("---------------------------\n");
                     p.score++;
+                    delay(1);
+                    clearScreen();
+                    printf("---------------------------\n");
                 } else {
                     printf("Wrong!\n");
+                    delay(1);
+                    clearScreen();
                     printf("---------------------------\n");
                 }
                 break;
@@ -444,12 +505,16 @@ void startQuiz() {
                 scanf(" %c", &answer);
                 clearInputBuffer();
 
-                if (answer == 'b') {
+                if (tolower(answer) == 'b') {
                     printf("Correct!\n");
-                    printf("---------------------------\n");
                     p.score++;
+                    delay(1);
+                    clearScreen();
+                    printf("---------------------------\n");
                 } else {
                     printf("Wrong!\n");
+                    delay(1);
+                    clearScreen();
                     printf("---------------------------\n");
                 }
                 break;
@@ -567,4 +632,16 @@ void clearInputBuffer() {
 
 void clearScreen() {
     system("cls");
+}
+
+void delay(int number_of_seconds)
+{
+    // Converting time into milli_seconds
+    int milli_seconds = 1000 * number_of_seconds;
+ 
+    // Storing start time
+    clock_t start_time = clock();
+ 
+    // looping till required time is not achieved
+    while (clock() < start_time + milli_seconds);
 }
