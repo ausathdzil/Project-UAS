@@ -69,12 +69,13 @@ int main() {
 
 void showHelp() {
     printf("\nThis is a simple Quiz program using C programming language.\n");
-    printf("----------------------------\n");
+    printf("-------------------------------------------------------------------\n");
     printf("You will be asked 5 questions.\n");
     printf("You can choose the correct answer from the given options.\n");
     printf("Input the alphabet of the correct answer. Eg: a\n");
     printf("At the end of the Quiz, you will get the score.\n");
-    printf("Your score will be calculated and displayed at the scoreboard menu.\n\n");
+    printf("Your score will be calculated and displayed at the scoreboard menu.\n");
+    printf("-------------------------------------------------------------------\n\n");
     printf("Input any key to go back to main menu\n");
 
     getchar();
