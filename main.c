@@ -116,6 +116,7 @@ void startQuiz() {
     // Setting the seed for rand() function
     srand((unsigned int)time(NULL));
 
+    // Looping through 5 questions randomly to ask the user
     for (int i = 0; i < QUIZ_QUESTIONS; i++) {
         printf("Question %d\n", i + 1);
 
@@ -596,7 +597,7 @@ int cmpScores(const void *a, const void *b) {
     const player *p1 = (const player *) a;
     const player *p2 = (const player *) b;
 
-    // Sorting in descending order
+    // Sorting scores in descending order
     if (p1->score < p2->score) {
         // p1 comes after p2
         return 1;
@@ -637,7 +638,7 @@ void clearInputBuffer() {
 }
 
 void clearScreen() {
-    // Clear the screen for better user experience
+    // Clearing the screen for better user experience
     system("cls");
 }
 
@@ -649,6 +650,6 @@ void delay(int number_of_seconds)
     // Storing start time
     clock_t start_time = clock();
 
-    // looping till required time is not achieved
+    // Looping till required time is not achieved
     while (clock() < start_time + milli_seconds);
 }
