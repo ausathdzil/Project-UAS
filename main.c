@@ -38,7 +38,8 @@ typedef struct {
 int main() {
     enum menu choice;
     char input[2];
-
+    
+    // Infinite loop to display menu, only exits when user chooses to quit
     while (1) {
         displayMenu();
 
@@ -99,7 +100,7 @@ void startQuiz() {
     printf("Enter your name: ");
     scanf("%s", p.name);
     clearInputBuffer();
-    
+
     strncpy(playerName, p.name, sizeof(playerName));
 
     printf("\n");
@@ -108,21 +109,21 @@ void startQuiz() {
     printf("----------------------------\n");
     delay(1);
     clearScreen();
-    
+
     // Array to keep track of questions
     bool question[NUM_QUESTIONS] = {false};
-    
+
     // Setting the seed for rand() function
     srand((unsigned int)time(NULL));
 
     for (int i = 0; i < QUIZ_QUESTIONS; i++) {
         printf("Question %d\n", i + 1);
-        
+
         // Generating random number between 1 and 15
         do {
             n = (rand() % NUM_QUESTIONS) + 1;
         } while (question[n - 1]);
-        
+
         // Setting the question to true to avoid repetition
         question[n - 1] = true;
 
@@ -503,7 +504,7 @@ void startQuiz() {
                 break;
         }
     }
-    
+
     // Score formula
     score = ((p.score / 5) * 100);
 
@@ -523,7 +524,7 @@ void startQuiz() {
         printf("You Failed!\n");
     }
     printf("----------------------------\n\n");
-    
+
     // Calls writeScore function to save player name and score to file
     writeScore(playerName, score);
 
@@ -539,7 +540,7 @@ void writeScore(char playerName[20], float score) {
         perror("Error opening file!");
         exit(1);
     }
-    
+
     // Saving player name and score to file
     fprintf(fptr, "%s %.2f\n", playerName, score);
 
@@ -558,7 +559,7 @@ void displayScore() {
         backToMenu();
     } else {
         char scoreStr[20];
-    
+
         // Tracking number of players
         while (fscanf(fptr, "%19s %19s", p[numPlayers].name, scoreStr) != EOF) {
             p[numPlayers].score = strtof(scoreStr, NULL);
@@ -566,16 +567,16 @@ void displayScore() {
         }
 
         fclose(fptr);
-    
+
         // Sorting the players by score
         qsort(p, numPlayers, sizeof(player), cmpScores);
-        
+
         // Setting the maximum number of players to display
         int numToDisplay = numPlayers < 5 ? numPlayers : 5;
 
         printf("\nSCOREBOARD\n");
         printf("----------------------------\n");
-    
+
         // Displaying top 5 players
         for (int i = 0; i < numToDisplay; i++) {
             printf("%d. %s %.2f\n", i + 1, p[i].name, p[i].score);
@@ -595,10 +596,10 @@ int cmpScores(const void *a, const void *b) {
     // Sorting in descending order
     if (p1->score < p2->score) {
         // p1 comes after p2
-        return 1; 
+        return 1;
     } else if (p1->score > p2->score) {
         // p1 comes before p2
-        return -1; 
+        return -1;
     } else {
         return 0;
     }
@@ -614,7 +615,7 @@ void showHelp() {
     printf("At the end of the Quiz, you will get the score.\n");
     printf("Your score will be calculated and displayed at the scoreboard menu.\n");
     printf("-------------------------------------------------------------------\n\n");
-    
+
     backToMenu();
 }
 
