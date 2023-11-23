@@ -97,6 +97,8 @@ void startQuiz() {
 
     printf("Welcome %s! let's start the quiz.\n", p.name);
     printf("----------------------------\n");
+    delay(1);
+    clearScreen();
 
     bool question[NUM_QUESTIONS] = {false};
 
@@ -545,9 +547,9 @@ void displayScore() {
         getchar();
         clearScreen();
     } else {
-        char scoreStr[4];
+        char scoreStr[20];
 
-        while (fscanf(fptr, "%19s %3s", p[numPlayers].name, scoreStr) == 2) {
+        while (fscanf(fptr, "%19s %19s", p[numPlayers].name, scoreStr) != EOF) {
             p[numPlayers].score = strtof(scoreStr, NULL);
             numPlayers++;
         }
