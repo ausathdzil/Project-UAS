@@ -347,6 +347,9 @@ void startQuiz() {
                     printf("---------------------------\n");
                 } else {
                     printf("Wrong!\n");
+                    delay(1);
+                    clearScreen();
+                    printf("---------------------------\n");
                 }
                 break;
 
