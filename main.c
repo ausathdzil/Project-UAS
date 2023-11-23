@@ -8,10 +8,15 @@
 #define NUM_QUESTIONS 15
 #define QUIZ_QUESTIONS 5
 
+// program functions
+void displayMenu();
 void startQuiz();
 void writeScore(char playerName[20], float score);
 void displayScore();
 void showHelp();
+
+// misc functions
+void backToMenu();
 void clearInputBuffer();
 void clearScreen();
 void delay(int number_of_seconds);
@@ -35,13 +40,7 @@ int main() {
     char input[2];
 
     while (1) {
-        printf("\nWELCOME TO C PROGRAMMING QUIZ\n");
-        printf("----------------------------\n");
-        printf("1. Start Quiz\n");
-        printf("2. Scoreboard\n");
-        printf("3. Help\n");
-        printf("4. Quit\n");
-        printf("----------------------------\n\n");
+        displayMenu();
 
         printf("Input your choice: ");
         fgets(input, sizeof(input), stdin);
@@ -79,6 +78,16 @@ int main() {
     }
 }
 
+void displayMenu() {
+    printf("\nWELCOME TO C PROGRAMMING QUIZ\n");
+    printf("----------------------------\n");
+    printf("1. Start Quiz\n");
+    printf("2. Scoreboard\n");
+    printf("3. Help\n");
+    printf("4. Quit\n");
+    printf("----------------------------\n\n");
+}
+
 void startQuiz() {
     player p;
     char playerName[20], answer;
@@ -90,7 +99,7 @@ void startQuiz() {
     printf("Enter your name: ");
     scanf("%s", p.name);
     clearInputBuffer();
-
+    
     strncpy(playerName, p.name, sizeof(playerName));
 
     printf("\n");
@@ -99,18 +108,22 @@ void startQuiz() {
     printf("----------------------------\n");
     delay(1);
     clearScreen();
-
+    
+    // Array to keep track of questions
     bool question[NUM_QUESTIONS] = {false};
-
+    
+    // Setting the seed for rand() function
     srand((unsigned int)time(NULL));
 
     for (int i = 0; i < QUIZ_QUESTIONS; i++) {
         printf("Question %d\n", i + 1);
-
+        
+        // Generating random number between 1 and 15
         do {
             n = (rand() % NUM_QUESTIONS) + 1;
         } while (question[n - 1]);
-
+        
+        // Setting the question to true to avoid repetition
         question[n - 1] = true;
 
         switch (n) {
@@ -490,7 +503,8 @@ void startQuiz() {
                 break;
         }
     }
-
+    
+    // Score formula
     score = ((p.score / 5) * 100);
 
     clearScreen();
@@ -509,13 +523,11 @@ void startQuiz() {
         printf("You Failed!\n");
     }
     printf("----------------------------\n\n");
-
+    
+    // Calls writeScore function to save player name and score to file
     writeScore(playerName, score);
 
-    printf("Input any key to go back to main menu\n");
-    getchar();
-    getchar();
-    clearScreen();
+    backToMenu();
 }
 
 void writeScore(char playerName[20], float score) {
@@ -527,7 +539,8 @@ void writeScore(char playerName[20], float score) {
         perror("Error opening file!");
         exit(1);
     }
-
+    
+    // Saving player name and score to file
     fprintf(fptr, "%s %.2f\n", playerName, score);
 
     fclose(fptr);
@@ -542,37 +555,35 @@ void displayScore() {
 
     if (fptr == NULL) {
         printf("No player has played the game yet!\n\n");
-        printf("Input any key to go back to main menu\n");
-        getchar();
-        getchar();
-        clearScreen();
+        backToMenu();
     } else {
         char scoreStr[20];
-
+    
+        // Tracking number of players
         while (fscanf(fptr, "%19s %19s", p[numPlayers].name, scoreStr) != EOF) {
             p[numPlayers].score = strtof(scoreStr, NULL);
             numPlayers++;
         }
 
         fclose(fptr);
-
+    
+        // Sorting the players by score
         qsort(p, numPlayers, sizeof(player), cmpScores);
-
+        
+        // Setting the maximum number of players to display
         int numToDisplay = numPlayers < 5 ? numPlayers : 5;
 
         printf("\nSCOREBOARD\n");
         printf("----------------------------\n");
-
+    
+        // Displaying top 5 players
         for (int i = 0; i < numToDisplay; i++) {
             printf("%d. %s %.2f\n", i + 1, p[i].name, p[i].score);
         }
 
         printf("----------------------------\n\n");
 
-        printf("Input any key to go back to main menu\n");
-        getchar();
-        getchar();
-        clearScreen();
+        backToMenu();
     }
 }
 
@@ -582,17 +593,19 @@ int cmpScores(const void *a, const void *b) {
     const player *p2 = (const player *) b;
 
     // Sorting in descending order
-    // return (p2->score - p1->score);
     if (p1->score < p2->score) {
-        return 1;
+        // p1 comes after p2
+        return 1; 
     } else if (p1->score > p2->score) {
-        return -1;
+        // p1 comes before p2
+        return -1; 
     } else {
         return 0;
     }
 }
 
 void showHelp() {
+    // Displaying help
     printf("\nThis is a simple Quiz program using C programming language.\n");
     printf("-------------------------------------------------------------------\n");
     printf("You will be asked 5 questions.\n");
@@ -601,7 +614,11 @@ void showHelp() {
     printf("At the end of the Quiz, you will get the score.\n");
     printf("Your score will be calculated and displayed at the scoreboard menu.\n");
     printf("-------------------------------------------------------------------\n\n");
+    
+    backToMenu();
+}
 
+void backToMenu() {
     printf("Input any key to go back to main menu\n");
     getchar();
     getchar();
@@ -609,8 +626,9 @@ void showHelp() {
 }
 
 void clearInputBuffer() {
-    // Clearing the input buffer after every input
     int c;
+
+    // // Clearing the input buffer after every input
     while ((c = getchar()) != '\n' && c != EOF);
 }
 
