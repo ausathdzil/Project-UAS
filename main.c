@@ -38,7 +38,7 @@ typedef struct {
 int main() {
     enum menu choice;
     char input[2];
-    
+
     // Infinite loop to display menu, only exits when user chooses to quit
     while (1) {
         displayMenu();
@@ -629,7 +629,7 @@ void backToMenu() {
 void clearInputBuffer() {
     int c;
 
-    // // Clearing the input buffer after every input
+    // Clearing the input buffer after every input
     while ((c = getchar()) != '\n' && c != EOF);
 }
 
