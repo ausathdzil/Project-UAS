@@ -13,7 +13,7 @@ void displayMenu();
 void startQuiz();
 void writeScore(char playerName[20], float score);
 void displayScore();
-void showHelp();
+void displayHelp();
 
 // misc functions
 void backToMenu();
@@ -63,7 +63,7 @@ int main() {
                     break;
                 case help:
                     clearScreen();
-                    showHelp();
+                    displayHelp();
                     break;
                 case quit:
                     printf("Goodbye");
@@ -609,7 +609,7 @@ int cmpScores(const void *a, const void *b) {
     }
 }
 
-void showHelp() {
+void displayHelp() {
     // Displaying help
     printf("\nThis is a simple Quiz program using C programming language.\n");
     printf("-------------------------------------------------------------------\n");
