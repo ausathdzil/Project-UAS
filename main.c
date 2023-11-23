@@ -5,7 +5,7 @@
 #include <stdbool.h>
 #include <time.h>
 
-#define NUM_QUESTIONS 16
+#define NUM_QUESTIONS 15
 #define QUIZ_QUESTIONS 5
 
 void startQuiz();
@@ -30,61 +30,52 @@ typedef struct {
     float score;
 } player;
 
-void main() {
-    printf("\nWELCOME TO C PROGRAMMING QUIZ\n");
-    printf("----------------------------\n");
-    printf("1. Start Quiz\n");
-    printf("2. Scoreboard\n");
-    printf("3. Help\n");
-    printf("4. Quit\n");
-    printf("----------------------------\n\n");
-    printf("Input your choice: ");
-
+int main() {
     enum menu choice;
-    scanf("%d", &choice);
-    clearInputBuffer();
+    char input[2];
 
-    switch (choice) {
-        case start:
-            clearScreen();
-            startQuiz();
-            break;
-        case scores:
-            clearScreen();
-            displayScore();
-            break;
-        case help:
-            clearScreen();
-            showHelp();
-            break;
-        case quit:
-            printf("Goodbye");
-            break;
-        default:
-            clearScreen();
-            printf("Invalid input\n\n");
-            main();
-            break;
-    }
-}
+    while (1) {
+        printf("\nWELCOME TO C PROGRAMMING QUIZ\n");
+        printf("----------------------------\n");
+        printf("1. Start Quiz\n");
+        printf("2. Scoreboard\n");
+        printf("3. Help\n");
+        printf("4. Quit\n");
+        printf("----------------------------\n\n");
 
-void showHelp() {
-    printf("\nThis is a simple Quiz program using C programming language.\n");
-    printf("-------------------------------------------------------------------\n");
-    printf("You will be asked 5 questions.\n");
-    printf("You can choose the correct answer from the given options.\n");
-    printf("Input the alphabet of the correct answer. Eg: a\n");
-    printf("At the end of the Quiz, you will get the score.\n");
-    printf("Your score will be calculated and displayed at the scoreboard menu.\n");
-    printf("-------------------------------------------------------------------\n\n");
-    printf("Input any key to go back to main menu\n");
+        printf("Input your choice: ");
+        fgets(input, sizeof(input), stdin);
+        choice = (enum menu)strtol(input, NULL, 10);
 
-    getchar();
-    switch (getchar()) {
-        default:
+        if (choice >= start && choice <= quit) {
+            clearInputBuffer();
+
+            switch (choice) {
+                case start:
+                    printf("\nStarting Quiz...\n");
+                    delay(1);
+                    clearScreen();
+                    startQuiz();
+                    break;
+                case scores:
+                    clearScreen();
+                    displayScore();
+                    break;
+                case help:
+                    clearScreen();
+                    showHelp();
+                    break;
+                case quit:
+                    printf("Goodbye");
+                    delay(1);
+                    return 0;
+            }
+        } else {
+            clearInputBuffer();
+            printf("Invalid choice!\n");
+            delay(1);
             clearScreen();
-            main();
-            break;
+        }
     }
 }
 
@@ -109,7 +100,8 @@ void startQuiz() {
 
     bool question[NUM_QUESTIONS] = {false};
 
-    srand(time(NULL));
+    srand((unsigned int)time(NULL));
+
     for (int i = 0; i < QUIZ_QUESTIONS; i++) {
         printf("Question %d\n", i + 1);
 
@@ -118,7 +110,7 @@ void startQuiz() {
         } while (question[n - 1]);
 
         question[n - 1] = true;
-        
+
         switch (n) {
             case 1:
                 printf("When was the C programming language developed?\n");
@@ -343,31 +335,6 @@ void startQuiz() {
                 break;
 
             case 10:
-                printf("Which one is not a valid data type in C?\n");
-                printf("a. int\n");
-                printf("b. float\n");
-                printf("c. string\n");
-                printf("d. char\n");
-                printf("---------------------------\n");
-                printf("Answer: ");
-                scanf(" %c", &answer);
-                clearInputBuffer();
-
-                if (tolower(answer) == 'c') {
-                    printf("Correct!\n");
-                    p.score++;
-                    delay(1);
-                    clearScreen();
-                    printf("---------------------------\n");
-                } else {
-                    printf("Wrong!\n");
-                    delay(1);
-                    clearScreen();
-                    printf("---------------------------\n");
-                }
-                break;
-
-            case 11:
                 printf("Which one is not a valid function in C?\n");
                 printf("a. gets()\n");
                 printf("b. scan()\n");
@@ -392,7 +359,7 @@ void startQuiz() {
                 }
                 break;
 
-            case 12:
+            case 11:
                 printf("What is the extension of C header file?\n");
                 printf("a. .cpp\n");
                 printf("b. .c\n");
@@ -417,7 +384,7 @@ void startQuiz() {
                 }
                 break;
 
-            case 13:
+            case 12:
                 printf("What programming language is most similar to C?\n");
                 printf("a. C++\n");
                 printf("b. Python\n");
@@ -442,7 +409,7 @@ void startQuiz() {
                 }
                 break;
 
-            case 14:
+            case 13:
                 printf("What can C be used for?\n");
                 printf("a. Web Development\n");
                 printf("b. Machine Learning\n");
@@ -467,7 +434,7 @@ void startQuiz() {
                 }
                 break;
 
-            case 15:
+            case 14:
                 printf("Which one is a valid integer constant?\n");
                 printf("a. 123\n");
                 printf("b. 123.45\n");
@@ -492,7 +459,7 @@ void startQuiz() {
                 }
                 break;
 
-            case 16:
+            case 15:
                 printf("Which one is a valid floating point constant?\n");
                 printf("a. 123\n");
                 printf("b. 123.45\n");
@@ -545,12 +512,8 @@ void startQuiz() {
 
     printf("Input any key to go back to main menu\n");
     getchar();
-    switch (getchar()) {
-        default:
-            clearScreen();
-            main();
-            break;
-    }
+    getchar();
+    clearScreen();
 }
 
 void writeScore(char playerName[20], float score) {
@@ -576,59 +539,81 @@ void displayScore() {
     fptr = fopen("scoreboard.txt", "r");
 
     if (fptr == NULL) {
-        printf("No Player has played the game!\n\n");
+        printf("No player has played the game yet!\n\n");
         printf("Input any key to go back to main menu\n");
         getchar();
-        switch (getchar()) {
-            default:
-                clearScreen();
-                main();
-                break;
+        getchar();
+        clearScreen();
+    } else {
+        char scoreStr[4];
+
+        while (fscanf(fptr, "%19s %3s", p[numPlayers].name, scoreStr) == 2) {
+            p[numPlayers].score = strtof(scoreStr, NULL);
+            numPlayers++;
         }
-    }
 
-    while (fscanf(fptr, "%s %f", p[numPlayers].name, &p[numPlayers].score) != EOF) {
-        numPlayers++;
-    }
+        fclose(fptr);
 
-    fclose(fptr);
+        qsort(p, numPlayers, sizeof(player), cmpScores);
 
-    qsort(p, numPlayers, sizeof(player), cmpScores);
+        int numToDisplay = numPlayers < 5 ? numPlayers : 5;
 
-    int numToDisplay = numPlayers < 5 ? numPlayers : 5;
+        printf("\nSCOREBOARD\n");
+        printf("----------------------------\n");
 
-    printf("\nSCOREBOARD\n");
-    printf("----------------------------\n");
+        for (int i = 0; i < numToDisplay; i++) {
+            printf("%d. %s %.2f\n", i + 1, p[i].name, p[i].score);
+        }
 
-    for (int i = 0; i < numToDisplay; i++) {
-        printf("%d. %s %.2f\n", i + 1, p[i].name, p[i].score);
-    }
+        printf("----------------------------\n\n");
 
-    printf("----------------------------\n\n");
-
-    printf("Input any key to go back to main menu\n");
-    getchar();
-    switch (getchar()) {
-        default:
-            clearScreen();
-            main();
-            break;
+        printf("Input any key to go back to main menu\n");
+        getchar();
+        getchar();
+        clearScreen();
     }
 }
 
 int cmpScores(const void *a, const void *b) {
-    player *p1 = (player *) a;
-    player *p2 = (player *) b;
+    // Typecasting
+    const player *p1 = (const player *) a;
+    const player *p2 = (const player *) b;
 
-    return (p2->score - p1->score);
+    // Sorting in descending order
+    // return (p2->score - p1->score);
+    if (p1->score < p2->score) {
+        return 1;
+    } else if (p1->score > p2->score) {
+        return -1;
+    } else {
+        return 0;
+    }
+}
+
+void showHelp() {
+    printf("\nThis is a simple Quiz program using C programming language.\n");
+    printf("-------------------------------------------------------------------\n");
+    printf("You will be asked 5 questions.\n");
+    printf("You can choose the correct answer from the given options.\n");
+    printf("Input the alphabet of the correct answer. Eg: a\n");
+    printf("At the end of the Quiz, you will get the score.\n");
+    printf("Your score will be calculated and displayed at the scoreboard menu.\n");
+    printf("-------------------------------------------------------------------\n\n");
+
+    printf("Input any key to go back to main menu\n");
+    getchar();
+    getchar();
+    clearScreen();
 }
 
 void clearInputBuffer() {
+    // Clearing the input buffer after every input
     int c;
     while ((c = getchar()) != '\n' && c != EOF);
 }
 
 void clearScreen() {
+    // Clear the screen for better user experience
     system("cls");
 }
 
@@ -636,10 +621,10 @@ void delay(int number_of_seconds)
 {
     // Converting time into milli_seconds
     int milli_seconds = 1000 * number_of_seconds;
- 
+
     // Storing start time
     clock_t start_time = clock();
- 
+
     // looping till required time is not achieved
     while (clock() < start_time + milli_seconds);
 }
