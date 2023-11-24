@@ -8,20 +8,20 @@
 #define NUM_QUESTIONS 15
 #define QUIZ_QUESTIONS 5
 
-// program functions
+// main functions
 void displayMenu();
 void startQuiz();
 void writeScore(char playerName[20], float score);
 void displayScore();
 void displayHelp();
 
+int cmpScores(const void *a, const void *b);
+
 // misc functions
 void backToMenu();
 void clearInputBuffer();
 void clearScreen();
 void delay(int number_of_seconds);
-
-int cmpScores(const void *a, const void *b);
 
 enum menu {
     start = 1,
@@ -642,8 +642,7 @@ void clearScreen() {
     system("cls");
 }
 
-void delay(int number_of_seconds)
-{
+void delay(int number_of_seconds) {
     // Converting time into milli_seconds
     int milli_seconds = 1000 * number_of_seconds;
 
